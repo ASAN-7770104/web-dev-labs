@@ -1,0 +1,15 @@
+{
+  "name": "plan-for-carting",
+  "version": "1.0.0",
+  "type": "module", 
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.x.x",
+    "ejs": "^3.x.x",
+    "express": "^4.x.x"
+  }
+}

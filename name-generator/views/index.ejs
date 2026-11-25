@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Band Generator</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Условие проверки: есть ли сгенерированное имя -->
+    <% if (locals.generatedName) { %>
+      <h1><%= generatedName %></h1>
+    <% } else { %>
+      <h1>Welcome to RandomName generator</h1>
+    <% } %>
+
+    <form action="/submit" method="POST">
+      <button type="submit">Generate Name</button>
+    </form>
+  </div>
+  
+  <footer>Copyright &copy; 200X</footer>
+</body>
+</html>

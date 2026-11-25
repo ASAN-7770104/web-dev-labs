@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Моя первая страница</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Мой путь во Frontend</h1>
+    <nav>
+      <a href="#about">Обо мне</a>
+      <a href="#plan">План обучения</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>Обо мне</h2>
+      <p>Здесь ты пишешь кто ты и зачем учишь фронтенд.</p>
+    </section>
+
+    <section id="plan">
+      <h2>План обучения</h2>
+      <ul>
+        <li>HTML — структура страницы</li>
+        <li>CSS — внешний вид страницы</li>
+        <li>JavaScript — логика и динамика</li>
+      </ul>
+
+      <h2>План на сегодня</h2>
+      <ol>
+        <li>Понять каркас HTML</li>
+        <li>Научиться делать заголовки и абзацы</li>
+        <li>Освоить списки и таблицы</li>
+      </ol>
+    </section>
+
+    <section id="photo">
+      <h2>Моё фото</h2>
+      <img src="images/me.jpg.jpg" alt="Моё фото" width="250" />
+    </section>
+
+    <section id="message">
+      <h2>Связаться со мной</h2>
+
+      <form>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" placeholder="Введите имя" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Введите email" required />
+
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Напишите что-нибудь"></textarea>
+
+        <button type="submit">Отправить</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h2>Контакты</h2>
+    <p>© 2025. Мой сайт.</p>
+  </footer>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
