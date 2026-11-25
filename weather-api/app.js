@@ -6,11 +6,14 @@ const port = 3000;
 
 
 const apiKey = process.env.OPENWEATHER_API_KEY;
-const city = "New York";
+const defaultCity = "New York";
 const units = "metric";
 
 app.get("/", async (req, res) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  // The city can be chosen in the address: /?city=Astana
+  const raw = typeof req.query.city === "string" ? req.query.city : defaultCity;
+  const city = raw.replace(/[^\p{L} .'-]/gu, "").slice(0, 60) || defaultCity;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=${units}`;
 
   try {
     const response = await axios.get(url);
