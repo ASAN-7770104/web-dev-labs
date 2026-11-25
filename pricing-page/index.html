@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тарифы - Учебная страница</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #e5e7eb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --orange-400: #fbbf24;
+            --orange-500: #f59e0b;
+        }
+        
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--bg-body);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Mock Browser Window */
+        .browser-window {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .browser-header {
+            background: #f1f5f9;
+            border-bottom: 1px solid #cbd5e1;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.close { background: #ef4444; }
+        .dot.min { background: #f59e0b; }
+        .dot.max { background: #10b981; }
+        
+        .browser-tabs-url {
+            display: flex;
+            flex: 1;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .tab {
+            background: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px 8px 0 0;
+            font-size: 0.875rem;
+            color: #334155;
+            font-weight: 500;
+            box-shadow: 0 -1px 2px rgba(0,0,0,0.05);
+            border: 1px solid #cbd5e1;
+            border-bottom: none;
+            position: relative;
+            bottom: -1px;
+        }
+
+        .address-bar {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 0.35rem 1rem;
+            font-size: 0.875rem;
+            color: #64748b;
+            flex: 1;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .address-bar::before {
+            content: "🔒";
+            font-size: 0.8rem;
+        }
+
+        /* Page Content */
+        .content {
+            padding: 5rem 2rem;
+            background: #ffffff;
+        }
+
+        .header-text {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header-text h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+            color: var(--gray-900);
+            font-weight: 700;
+        }
+
+        .header-text p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 1.125rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border-radius: 1rem;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-free {
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .card-pro {
+            background-color: var(--gray-900);
+            color: #fff;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 2rem;
+            background: var(--orange-500);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: baseline;
+            line-height: 1;
+        }
+
+        .plan-period {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #6b7280;
+            margin-left: 0.5rem;
+        }
+
+        .card-pro .plan-price {
+            color: var(--orange-500);
+        }
+
+        .card-pro .plan-period {
+            color: #9ca3af;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2.5rem 0;
+            flex: 1;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .card-free .features li { color: #4b5563; }
+        .card-pro .features li { color: #d1d5db; }
+
+        .check {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+        
+        .card-free .check { 
+            background: #e5e7eb;
+            color: #6b7280; 
+        }
+        
+        .card-pro .check { 
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--orange-500); 
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-free {
+            background-color: var(--gray-300);
+            color: var(--gray-900);
+        }
+
+        .btn-pro {
+            background-color: var(--orange-500);
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .browser-tabs-url {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="browser-window">
+        <!-- Browser Header Top Bar -->
+        <div class="browser-header">
+            <div class="window-controls">
+                <span class="dot close"></span>
+                <span class="dot min"></span>
+                <span class="dot max"></span>
+            </div>
+            <div class="browser-tabs-url">
+                <div class="tab">Тарифы</div>
+                <div class="address-bar">localhost:5501</div>
+            </div>
+        </div>
+        
+        <!-- Web Page Content -->
+        <div class="content">
+            <div class="header-text">
+                <h1>Выбор тарифа</h1>
+                <p>Прозрачные и понятные цены для ваших задач</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Free Card -->
+                <div class="card card-free">
+                    <div class="plan-name">Free</div>
+                    <div class="plan-price">0 $ <span class="plan-period">/ мес</span></div>
+                    <ul class="features">
+                        <li><span class="check">✓</span> Поддержка сообщества</li>
+                        <li><span class="check">✓</span> 1 ГБ места на сервере</li>
+                        <li><span class="check">✓</span> Базовые шаблоны</li>
+                        <li><span class="check">✓</span> 1 личный проект</li>
+                    </ul>
+                    <button class="btn btn-free">Выбрать Free</button>
+                </div>
+
+                <!-- Pro Card -->
+                <div class="card card-pro">
+                    <span class="badge">Популярный</span>
+                    <div class="plan-name">Pro</div>
+                    <div class="plan-price">100 $ <span class="plan-period">/ мес</span></div>
+                    <ul class="features">
+                        <li><span class="check">✓</span> Приоритетная поддержка 24/7</li>
+                        <li><span class="check">✓</span> Безлимитное место на сервере</li>
+                        <li><span class="check">✓</span> Премиум шаблоны + API</li>
+                        <li><span class="check">✓</span> Неограниченное число проектов</li>
+                    </ul>
+                    <button class="btn btn-pro">Выбрать Pro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

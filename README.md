@@ -2,6 +2,8 @@
 
 **English** · [Русский](README.ru.md)
 
+![Pricing page exercise](docs/pricing.png)
+
 Small exercises from my web development courses.
 
 | Folder | What it is | Stack |
@@ -9,6 +11,7 @@ Small exercises from my web development courses.
 | `weather-api` | Current weather from the OpenWeatherMap API | Express, Axios |
 | `name-generator` | Random band name generator | Express, EJS |
 | `slugify-demo` | Working with an npm package | Node.js, slugify |
+| `pricing-page` | Pricing page with two plans (in Russian) | HTML, CSS |
 | `design-studio-landing` | Landing page | HTML, CSS, Bootstrap 5 |
 | `first-frontend-page` | My first front-end page | HTML, CSS, JavaScript |
 
