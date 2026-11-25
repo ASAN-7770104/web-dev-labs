@@ -1,5 +1,7 @@
 # Web development labs
 
+**English** · [Русский](README.ru.md)
+
 Small exercises from my web development courses.
 
 | Folder | What it is | Stack |
